@@ -1,29 +1,5 @@
 import 'package:flutter/material.dart';
 
-class Planet extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        Container(
-          margin: EdgeInsets.only(bottom: 12),
-          width: 80,
-          height: 80,
-          child: Image.asset('assets/mercury.png'),
-          decoration: BoxDecoration(
-            color: Colors.indigo[900],
-            border: Border.all(
-              color: Color(0xFF1A237B),
-              width: 4,
-            ),
-            borderRadius: BorderRadius.circular(12),
-          ),
-        ),
-      ],
-    );
-  }
-}
 
 class Screen extends StatelessWidget {
   @override
@@ -42,26 +18,65 @@ class Screen extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Container(
-                width: 80,
-                height: 80,
-                child: Image.asset('assets/mercury.png'),
-                decoration: BoxDecoration(
-                  color: Colors.indigo[900],
-                  border: Border.all(
-                    color: Color(0xFF1A237B),
-                    width: 4,
-                  ),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-              Planet(),
-              Planet(),
-              Planet(),
+              Planet("assets/mercury.png", "Mercury"),
+              Planet("assets/venus.png", "Venus"),
+              Planet("assets/earth.png", "Earth"),
+              Planet("assets/mars.png", "Mars"),
+              Planet("assets/jupiter.png", "Jupiter"),
+              Planet("assets/saturn.png", "Saturn"),
+              Planet("assets/uranus.png", "Uranus"),
+              Planet("assets/neptune.png", "Neptune"),
+
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+
+
+class Planet extends StatelessWidget {
+  late String path;
+  late String name;
+  Planet(String path, String name){
+    this.path = path;
+    this.name = name;
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Container(
+          margin: EdgeInsets.only(bottom: 12),
+          width: 80,
+          height: 80,
+          child: Image.asset(path),
+          decoration: BoxDecoration(
+            color: Colors.indigo[900],
+            border: Border.all(
+              color: Color(0xFF1A237B),
+              width: 4,
+            ),
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+        Text(
+          name,
+          textAlign: TextAlign.right,
+          style: TextStyle(
+            color: Colors.indigo[900],
+            fontWeight: FontWeight.w200,
+          ),
+          
+        ),
+        Icon(
+          Icons.info,
+          color: Colors.indigo[900],
+        ),
+      ],
     );
   }
 }
